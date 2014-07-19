@@ -1,0 +1,22 @@
+{
+	"strict": true,
+	"indent": 4,
+	"newcap": true,
+	"freeze": true,
+	"latedef": false,
+	"nonbsp": true,
+	"immed": true,
+	"quotmark": "single",
+	"browser": true,
+	"devel": true,
+	"undef": true,
+	"predef": [
+		"requestAnimationFrame",
+		"requirejs",
+		"require",
+		"define",
+		"module",
+		"$",
+		"THREE"
+	]
+}
