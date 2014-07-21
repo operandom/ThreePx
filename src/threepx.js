@@ -65,7 +65,7 @@
 				// THREE
 				scene, camera, renderer,
 				cameraOffsetZ = 2000,
-				TwoRadians = 360 / Math.PI,
+				twoRadians = 360 / Math.PI,
 				
 				// Debug
 				plane, plane100,
@@ -337,7 +337,7 @@
 				
 				renderer.setSize(width, height);
 		
-				camera.fov = fov = Math.atan( height / ( 2 * cameraOffsetZ ) ) * TwoRadians;
+				camera.fov = fov = Math.atan( height / ( 2 * cameraOffsetZ ) ) * twoRadians;
 				perspective = Math.pow( width/2*width/2 + height/2*height/2, 0.5 ) / Math.tan( fov/2 * Math.PI / 180 )
 				camera.aspect = ratio = width / height;
 				camera.updateProjectionMatrix();
