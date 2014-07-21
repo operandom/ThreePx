@@ -1,3 +1,8 @@
+/*!
+ * @author Operandom (Valéry Herlaud)
+ * @licence MIT
+ */
+
 (function(root) {
 	
 	'use strict';
@@ -296,7 +301,7 @@
 				
 				var currentWidth = sizeReferer.clientWidth,
 					currentHeight = sizeReferer.clientHeight,
-					currentPerspective = getVendorStyleProperty('perspective')
+					currentPerspective = getComputedPerspective()
 				;
 				
 				
@@ -394,26 +399,60 @@
 			}
 			
 			
-			function getVendorStyleProperty(name) {
+			function getComputedPerspective() {
 				
-				var style = window.getComputedStyle(wrapper),
-					perspective
-				;
+				var propertyName = 'perspective',
+					property = parseInt(getComputedCSSProperty(propertyName));
 				
-				perspective = parseInt(
-					style.getPropertyValue('-webkit-' + name) ||
-					style.getPropertyValue('-moz-' + name) ||
-					style.getPropertyValue(name)
-				);
-				
-				if (isNaN(perspective)) {
-					perspective = defaultPerspective;
-					wrapper.style.webkitPerspective = perspective + 'px';
-					wrapper.style.mozPerspective = perspective + 'px';
-					wrapper.style.perspective = perspective + 'px';
+				if (isNaN(property)) {
+					setVendorCSSProperty(propertyName, defaultPerspective + 'px');
 				}
 								
-				return perspective;
+				return property;
+			}
+			
+			
+			function getComputedPerspectiveOrigin() {
+				
+				
+				var propertyName = 'perspective-origin',
+					property = parseInt(getComputedCSSProperty(propertyName));
+
+				//@TODO
+
+				return property;
+			}
+			
+			
+			function getComputedCSSProperty(name) {
+								
+				var style = window.getComputedStyle(wrapper),
+					property = style.getPropertyValue(name) ||
+					           style.getProperty('-webkit-' + name) ||
+					           style.getProperty('-moz-' + name);					
+				
+				return property;
+			}
+			
+			
+			function setVendorCSSProperty(name, value) {
+				
+				var Name = formatForVendor(name),
+					style = wrapper.style;
+				
+				style['webkit' + Name] = value;
+				style['moz' + Name] = value;
+				style[name] = value;
+				
+			}
+			
+			
+			function formatForVendor(string) {
+				
+				return string.split('-').map(function (part) {
+					return part.charAt(0).toUpperCase() + part.substring(1);
+				}).join('');
+				
 			}
 									
 		}
