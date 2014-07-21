@@ -408,9 +408,9 @@
 				
 				if (isNaN(perspective)) {
 					perspective = defaultPerspective;
-					wrapper.style.webkitPerspective = defaultPerspective + 'px';
-					wrapper.style.mozPerspective = defaultPerspective + 'px';
-					wrapper.style.perspective = defaultPerspective + 'px';
+					wrapper.style.webkitPerspective = perspective + 'px';
+					wrapper.style.mozPerspective = perspective + 'px';
+					wrapper.style.perspective = perspective + 'px';
 				}
 				
 				console.log(perspective);
