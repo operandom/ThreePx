@@ -20,7 +20,7 @@ requirejs(['three','threepx'], function(THREE, THREEPX) {
 	
 	wrapperElement.appendChild(threepx.domElement);
 	
-	var geometry = new THREE.CubeGeometry(100,100,100),
+	var geometry = new THREE.BoxGeometry(100,100,100),
 		material = new THREE.MeshPhongMaterial({
 			ambient: 0x030303,
 			color: 0xdddddd,
@@ -66,7 +66,6 @@ requirejs(['three','threepx'], function(THREE, THREEPX) {
 			messageStyle = messageElement.style;
 		
 		if (threepx.sizeChanged) {
-			perspective = threepx.perspective + 'px';
 			wrapperStyle.webkitPerspective = perspective;
 			wrapperStyle.mozPerspective = perspective;
 			wrapperStyle.perspective = perspective;
@@ -78,8 +77,8 @@ requirejs(['three','threepx'], function(THREE, THREEPX) {
 		messageStyle.transform = translate;
 		messageStyle.zIndex = cube.position.z > 0 ? 4 : 2;
 		
-		return true
+		return true;
 		
-	}
+	};
 	
 });
