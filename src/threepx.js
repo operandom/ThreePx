@@ -41,13 +41,8 @@
 		function THREEPX (wrapper, options) { //@TODO group options
 			
 			var self = this,
+				defaultPerspective = 1000,
 				
-				fov,
-				perspective,
-				ratio,
-				near = 1,
-				far = 10000,
-								
 				// Options
 				configurable = false,
 				autoResize = true,
@@ -56,15 +51,19 @@
 				sizeReferer,
 				renderFunction,
 				
+				// View
+				perspective, width, height, fov, ratio,
+				near = 1,
+				far = 10000,
+
 				// Flags
 				activated,
-				sizeChanged,
+				viewChanged,
 				sizeRefererChanged,
 				userNeedRender,
 				
 				// THREE
 				scene, camera, renderer,
-				cameraOffsetZ = 2000,
 				twoRadians = 360 / Math.PI,
 				
 				// Debug
@@ -77,6 +76,7 @@
 			defineClass();
 			parseOptions(options);
 			initialize();
+			
 			
 			
 			
@@ -106,10 +106,10 @@
 						enumerable: true,
 						get: getPerspective
 					},
-					sizeChanged: {
+					viewChanged: {
 						configurable: configurable,
 						enumerable: true,
-						get: getSizeChanged
+						get: getViewChanged
 					},
 					renderFunction: {
 						configurable: configurable,
@@ -158,8 +158,8 @@
 			}
 			
 			
-			function getSizeChanged() {
-				return sizeChanged;
+			function getViewChanged() {
+				return viewChanged;
 			}
 
 
@@ -174,7 +174,7 @@
 
 
 			function getAutoResize() {
-				return autoresize;
+				return autoResize;
 			}
 
 
@@ -217,7 +217,6 @@
 				console.log('[THREEPX] initialization start');
 								
 				camera = new THREE.PerspectiveCamera(fov, ratio, near, far);
-				camera.position.set(0,0,cameraOffsetZ);
 				
 				scene = new THREE.Scene();
 				scene.add(camera);
@@ -295,18 +294,24 @@
 			
 			function render(timestamp) {
 				
-				var width = sizeReferer.clientWidth,
-					height = sizeReferer.clientHeight
+				var currentWidth = sizeReferer.clientWidth,
+					currentHeight = sizeReferer.clientHeight,
+					currentPerspective = getVendorStyleProperty('perspective')
 				;
 				
+				
 				if (autoResize) {
-					sizeChanged = width !== renderer.domElement.width
-					           || height !== renderer.domElement.height;
+					viewChanged = currentWidth !== width ||
+					              currentHeight !== height ||
+					              currentPerspective !== perspective;
+										
+					width = currentWidth;
+					height = currentHeight;
+					perspective = currentPerspective;
 				}
 				
-				if (sizeRefererChanged || sizeChanged) {
-					
-					updateView(width, height);
+				if (sizeRefererChanged || viewChanged) {
+					updateView(currentWidth, currentHeight, currentPerspective);
 					
 					if (debug) {
 						updateDebug(width, height);
@@ -315,7 +320,7 @@
 				
 				userNeedRender = renderFunction && renderFunction(timestamp, width, height) === true;
 				
-				if (sizeRefererChanged || sizeChanged || userNeedRender) {
+				if (sizeRefererChanged || viewChanged || userNeedRender) {
 					renderer.render(scene, camera);
 					sizeRefererChanged = false;
 				}
@@ -323,7 +328,7 @@
 				
 				// Clean tags
 				sizeRefererChanged = false;
-				sizeChanged = false;
+				viewChanged = false;
 				userNeedRender = false;
 				
 				if (activated) {
@@ -333,13 +338,13 @@
 			}
 			
 			
-			function updateView(width, height) {
+			function updateView(width, height, perspective) {
 				
 				renderer.setSize(width, height);
 		
-				camera.fov = fov = Math.atan( height / ( 2 * cameraOffsetZ ) ) * twoRadians;
-				perspective = Math.pow( width/2*width/2 + height/2*height/2, 0.5 ) / Math.tan( fov/2 * Math.PI / 180 )
+				camera.fov = fov = Math.atan( height / ( 2 * perspective ) ) * twoRadians;
 				camera.aspect = ratio = width / height;
+				camera.position.set(0,0,perspective);
 				camera.updateProjectionMatrix();
 				
 			}
@@ -385,6 +390,32 @@
 				} else {
 					sizeReferer = wrapper;
 				}
+				
+			}
+			
+			
+			function getVendorStyleProperty(name) {
+				
+				var style = window.getComputedStyle(wrapper),
+					perspective
+				;
+				
+				perspective = parseInt(
+					style.getPropertyValue('-webkit-' + name) ||
+					style.getPropertyValue('-moz-' + name) ||
+					style.getPropertyValue(name)
+				);
+				
+				if (isNaN(perspective)) {
+					perspective = defaultPerspective;
+					wrapper.style.webkitPerspective = defaultPerspective + 'px';
+					wrapper.style.mozPerspective = defaultPerspective + 'px';
+					wrapper.style.perspective = defaultPerspective + 'px';
+				}
+				
+				console.log(perspective);
+				
+				return perspective;
 			}
 									
 		}
