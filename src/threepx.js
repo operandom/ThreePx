@@ -412,9 +412,7 @@
 					wrapper.style.mozPerspective = perspective + 'px';
 					wrapper.style.perspective = perspective + 'px';
 				}
-				
-				console.log(perspective);
-				
+								
 				return perspective;
 			}
 									
