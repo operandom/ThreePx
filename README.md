@@ -17,8 +17,6 @@ Quick Example
 var wrapperElement = document.getElementById('wrapper'),
 	threepx = new THREEPX(wrapperElement);
 
-wrapperElement.appendChild(threepx.domElement);
-
 var size = 200,
 	material = new THREE.MeshLambertMaterial({
 		map: THREE.ImageUtils.loadTexture('crate.jpg')
