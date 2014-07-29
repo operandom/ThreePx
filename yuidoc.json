@@ -1,0 +1,9 @@
+{
+	"logo": "logo.svg",
+	"options": {
+		"paths": "./src",
+		"outdir": "./docs",
+		"attributesEmit": "true"
+	}
+
+}
