@@ -60,8 +60,20 @@ threepx.renderFunction  = function (timestamp, width, height) {
 }
 ```
 
-	
-
 Requirements
 ------------
 Three.js r66+ and a modern browser with WebGl, requestAnimationFrame() and css transform support.
+
+TODO
+----
+* Add support of perspectiveOrigin
+* Add property change events
+* Improve code
+
+Developers
+----------
+Install Gulp and node modules if you want minified the source.
+
+Licence
+-------
+Copyright (c) 2014 Valéry Herlaud. Licensed under the MIT license. See the file LICENSE.md in this distribution for more details.
