@@ -10,6 +10,7 @@
 	"browser": true,
 	"devel": true,
 	"undef": true,
+	"eqnull": true,
 	"predef": [
 		"requestAnimationFrame",
 		"requirejs",
