@@ -1,5 +1,6 @@
 requirejs.config({
 	paths: {
+//		threenoamd: '//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min',
 		threenoamd: '//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min',
 		three: 'three-amd',
 		threepx: '../../src/threepx'
@@ -17,9 +18,7 @@ requirejs(['three','threepx'], function(THREE, THREEPX) {
 			debug: true
 		})
 	;
-	
-	wrapperElement.appendChild(threepx.domElement);
-	
+		
 	var geometry = new THREE.BoxGeometry(100,100,100),
 		material = new THREE.MeshPhongMaterial({
 			ambient: 0x030303,
