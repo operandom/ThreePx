@@ -1,0 +1,243 @@
+{
+    "project": {
+        "logo": "assets/img/logo64.png",
+        "name": "ThreePx",
+        "description": "The size of this plane doesn't change when the html wrapper changes it's size.",
+        "version": "0.1.0"
+    },
+    "files": {
+        "src\\threepx.js": {
+            "name": "src\\threepx.js",
+            "modules": {},
+            "classes": {
+                "THREEPX": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "THREEPX": {
+            "name": "THREEPX",
+            "shortname": "THREEPX",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src\\threepx.js",
+            "line": 39,
+            "description": "ThreePx synchronises the [three.js](href=\"http://threejs.org/\")\nfrustrum with that of the CSS.<br>\nSee working examples in the examples folder.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "wrapper",
+                    "description": "The `THREEPX.renderer.domElement`\n   will be added at position 0 of the wrapper.",
+                    "type": "HTMLElement"
+                },
+                {
+                    "name": "options",
+                    "description": "The default options are:\n * __configurable:__ `false`<br>\n   Enable this option to override if you want override the API.\n * __autoInitializeThreejs:__ `true`<br>\n   Enable or disable the creation of the scene, the renderer\n   and the camera on the new ThreePx instance.\n * __autoResize:__ `true`<br>\n   Enable or disable the bind between the wrapper size and\n   the `THREEPX.renderer.domElement`.\n * __debug:__ `false`<br>\n   Enable or disable some three.js elements added to the scene to debug.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "example": [
+                "\n      var wrapperElement = document.getElementById('wrapper'),\n          threepx = new THREEPX(wrapperElement),\n          mesh = new THREE.Mesh(\n              // define your mesh\n          )\n      ;\n\n      threepx.scene.add(mesh);\n  \n      var lastTimestamp = new Date();\n\n      threepx.renderFunction  = function (timestamp, width, height) {\n    \n          var delta = timestamp - lastTimestamp,\n              angle = 0.02 * delta * 2 * Math.PI / 1000\n          ;\n\n          mesh.rotation.x += angle;\n          mesh.rotation.y += angle;\n\n          mesh.position.set(100 + width/2, 100 - height/2, 0);\n\n          lastTimestamp = timestamp;\n\n          return true;\n      }"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src\\threepx.js",
+            "line": 268,
+            "description": "ThreePx need WebGL and requestAnimationFrame() to be used.\nIf these requirements are not satisfied canBeUsed property is set to false.",
+            "itemtype": "property",
+            "name": "canBeUsed",
+            "type": "{Boolean}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 281,
+            "description": "The field of view given for the perspective property.",
+            "itemtype": "property",
+            "name": "fov",
+            "type": "{Float}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 293,
+            "description": "The perspective parse from the wrapper CSS.",
+            "itemtype": "property",
+            "name": "perspective",
+            "type": "{Float}",
+            "default": "2000 if CSS perspective is not defined for the wrapper.",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 306,
+            "description": "Set to true if the view changed during the frame.",
+            "itemtype": "property",
+            "name": "viewChanged",
+            "type": "{Bollean}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 318,
+            "description": "Enable or disable the rendering.",
+            "itemtype": "property",
+            "name": "enable",
+            "type": "{Boolean}",
+            "default": "true",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 339,
+            "description": "If autoResize is set to true,\nthe size of the `THREEPX.renderer.domElement` is bind\nto the wrapper size.\n\t\t\t \n*This property can be set in the options passed to the constructor.*",
+            "itemtype": "property",
+            "name": "autoResize",
+            "type": "{Bollean}",
+            "default": "true",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 360,
+            "description": "An user function called at the end of the render process.\nThe function must return true to make the renderer render.",
+            "example": [
+                "\n    threepx.renderFunction = function (timestamp, width, height) {\n        cube.rotation.y += 0.01;\n        return true;\n    }"
+            ],
+            "itemtype": "property",
+            "name": "renderFunction",
+            "type": "{Function}",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 382,
+            "description": "The actual width of the `THREEPX.renderer.domElement`.<br>\nIf explicitWidth property is null or undefined,\nthe width is equal to the `THREEPX.wrapper.clientWidth`\nelse the width is equal to explicitWidth property.",
+            "itemtype": "property",
+            "name": "width",
+            "type": "{Integer}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 397,
+            "description": "The actual height of the `THREEPX.renderer.domElement`.<br>\nIf explicitHeight property is null or undefined,\nthe width is equal to the `THREEPX.wrapper.clientHeight`\nelse the height is equal to explicitHeight property.",
+            "itemtype": "property",
+            "name": "height",
+            "type": "{Integer}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 412,
+            "description": "If the explicit width is not null or not undefined,\nthe width is set tho the explicit width\nand the autoResize is not effective for the width.<br>\n\n*Update the value will generate a three.js render.*",
+            "itemtype": "property",
+            "name": "explicitWidth",
+            "type": "{Integer}",
+            "default": "undefined",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 440,
+            "description": "If the explicit height is not null or not undefined,\nthe height is set tho the explicit height\nand the autoResize is not effective for the height.<br>\n\n*Update the value will generate a three.js render.*",
+            "itemtype": "property",
+            "name": "explicitHeight",
+            "type": "{Integer}",
+            "default": "undefined",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 468,
+            "description": "Set to true if the wrapper changed during the frame.",
+            "itemtype": "property",
+            "name": "wrapperChanged",
+            "type": "{Boolean}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 480,
+            "description": "The wrapper used by the instance of ThreePx.",
+            "itemtype": "property",
+            "name": "wrapper",
+            "type": "{HTMLElement}",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 503,
+            "description": "A flag to know if the scene has changed during the frame.",
+            "itemtype": "property",
+            "name": "sceneChanged",
+            "type": "{Boolean}",
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 515,
+            "description": "The three.js [scene](http://threejs.org/docs/#Reference/Scenes/Scene)\nused by the instance of ThreePx.\n\n*Camera will be automatically added to scene.*",
+            "itemtype": "property",
+            "name": "scene",
+            "type": "{THREE.Scene}",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 541,
+            "description": "A flag to know if the renderer has changed during the frame.",
+            "itemtype": "property",
+            "name": "rendererChanged",
+            "readonly": "",
+            "type": "{Boolean}",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 553,
+            "description": "The three.js [renderer](http://threejs.org/docs/#Reference/Renderers/WebGLRenderer)\nused by the instance of ThreePx.",
+            "itemtype": "property",
+            "name": "renderer",
+            "type": "{THREE.WebGLRenderer}",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 577,
+            "description": "A flag to know if the camera has changed during the frame.",
+            "itemtype": "property",
+            "name": "cameraChanged",
+            "readonly": "",
+            "type": "{Boolean}",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 589,
+            "description": "The three.js [camera](http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera)\nused by the instance of ThreePx.\n\n*Camera will be automatically added to scene.*",
+            "itemtype": "property",
+            "name": "camera",
+            "type": "{THREE.PerspectiveCamera}",
+            "class": "THREEPX"
+        }
+    ],
+    "warnings": []
+}

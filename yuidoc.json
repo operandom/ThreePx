@@ -1,0 +1,9 @@
+{
+	"logo": "assets/img/logo64.png",
+	"options": {
+		"paths": "./src",
+		"outdir": "./docs",
+		"attributesEmit": "true"
+	}
+
+}
