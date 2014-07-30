@@ -1,5 +1,5 @@
 {
-	"logo": "assets/img/logo64.png",
+	"logo": "logo.png",
 	"options": {
 		"paths": "./src",
 		"outdir": "./docs",
