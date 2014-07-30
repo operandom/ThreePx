@@ -15,11 +15,11 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="..\assets\img\logo64.png" title="ThreePx"></h1>
+                <h1><img src="..\logo.png" title="ThreePx"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.1.0</em>
+            <em>API Docs for: 0.1.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -93,12 +93,16 @@
 
 (function(root) {
 	
+	
 	&#x27;use strict&#x27;;
-	var define = root.define,
+	var version = &#x27;0.1.1&#x27;,
+		define = root.define,
 		isNode = typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;,
 		isAMD  = typeof define === &#x27;function&#x27; &amp;&amp; define.amd
 		;
 		
+	console.log(&#x27;ThreePx v&#x27; + version);
+	
 	if (isNode) {
 		console.log(&#x27;[THREEPX] Nodejs detected&#x27;);
 		define = function (requirements, factory) {
@@ -120,7 +124,7 @@
 	
 	define([&#x27;three&#x27;], function (THREE) {
 		
-		console.log(&#x27;[THREEPX] class defined.&#x27;);
+		console.log(&#x27;[THREEPX] Class defined.&#x27;);
 		
 		return THREEPX;
 		
@@ -239,6 +243,11 @@
 			function defineClass() {
 				
 				Object.defineProperties(self, {
+					version: {
+						configurable: configurable,
+						enumerable: true,
+						get: getVersion
+					},
 					canBeUsed: {
 						configurable: configurable,
 						enumerable: true,
@@ -352,6 +361,13 @@
 			////////////////////////////////////////////////////////////////////
 
 			
+			
+			/**
+			 *
+			 */
+			function getVersion() {
+				return version;
+			}
 			
 			/**
 			 * ThreePx need WebGL and requestAnimationFrame() to be used.
@@ -983,15 +999,21 @@
 
 
 			function setCanBeUsed() {
-				var value = false,
-					canvas = document.createElement(&#x27;canvas&#x27;);
+				var canvas = document.createElement(&#x27;canvas&#x27;),
+					vendors = [&#x27;webkit&#x27;, &#x27;moz&#x27;, &#x27;ms&#x27;, &#x27;o&#x27;];
 				
-				value = canvas.getContext &amp;&amp; canvas.getContext(&#x27;webgl&#x27;);
-				value = value &amp;&amp; requestAnimationFrame &amp;&amp; typeof requestAnimationFrame === &#x27;function&#x27;;
 				
-				canBeUsed = value;
+				// from https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js
+				canBeUsed = !!(function () { try { return !! window.WebGLRenderingContext &amp;&amp; (canvas.getContext(&#x27;webgl&#x27;) || canvas.getContext(&#x27;experimental-webgl&#x27;)); } catch(e) { return false; }})();
 				
-				if (!value) {
+				// from https://gist.github.com/paulirish/1579671
+				for(var i = 0; i &lt; vendors.length &amp;&amp; !window.requestAnimationFrame; i++) {
+					window.requestAnimationFrame = window[vendors[i]+&#x27;RequestAnimationFrame&#x27;];
+				}
+				
+				canBeUsed = canBeUsed &amp;&amp; window.requestAnimationFrame;
+				
+				if (!canBeUsed) {
 					console.log(&#x27;[THREEPX] Cannot be used.&#x27;);
 				}
 			}
