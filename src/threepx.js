@@ -501,7 +501,7 @@
 
 
 			/**
-			 * Set to true if the scene changed during the frame.
+			 * A flag to know if the scene has changed during the frame.
 			 * 
 			 * @property sceneChanged
 			 * @type {Boolean}
@@ -516,7 +516,7 @@
 			 * The three.js [scene](http://threejs.org/docs/#Reference/Scenes/Scene)
 			 * used by the instance of ThreePx.
 			 * 
-			 * *Camera will be added to scene*
+			 * *Camera will be automatically added to scene.*
 			 * 
 			 * @property scene
 			 * @type {THREE.Scene}
@@ -539,7 +539,7 @@
 
 
 			/**
-			 * Set to true if the renderer changed during the frame.
+			 * A flag to know if the renderer has changed during the frame.
 			 * 
 			 * @property rendererChanged
 			 * @readOnly
@@ -575,8 +575,7 @@
 
 
 			/**
-			 * If the renderer changed during the frame,
-			 * the value of this property is set to true.
+			 * A flag to know if the camera has changed during the frame.
 			 * 
 			 * @property cameraChanged
 			 * @readOnly
@@ -591,7 +590,7 @@
 			 * The three.js [camera](http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera)
 			 * used by the instance of ThreePx.
 			 * 
-			 * *Camera will be added to scene*
+			 * *Camera will be automatically added to scene.*
 			 * 
 			 * @property camera
 			 * @type {THREE.PerspectiveCamera}
