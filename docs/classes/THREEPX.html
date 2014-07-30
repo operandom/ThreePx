@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>THREEPX - ThreePx</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..\assets\img\logo64.png" title="ThreePx"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/THREEPX.html">THREEPX</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>THREEPX Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_threepx.js.html#l39"><code>src\threepx.js:39</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>ThreePx synchronises the <a href="href=&quot;http://threejs.org/&quot;">three.js</a>
+frustrum with that of the CSS.<br>
+See working examples in the examples folder.</p>
+
+</div>
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_THREEPX" class="method item">
+    <h3 class="name"><code>THREEPX</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>wrapper</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l39"><code>src\threepx.js:39</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">wrapper</code>
+                        <span class="type">HTMLElement</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The <code>THREEPX.renderer.domElement</code>
+   will be added at position 0 of the wrapper.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The default options are:</p>
+<ul>
+<li><strong>configurable:</strong> <code>false</code><br>
+Enable this option to override if you want override the API.</li>
+<li><strong>autoInitializeThreejs:</strong> <code>true</code><br>
+Enable or disable the creation of the scene, the renderer
+and the camera on the new ThreePx instance.</li>
+<li><strong>autoResize:</strong> <code>true</code><br>
+Enable or disable the bind between the wrapper size and
+the <code>THREEPX.renderer.domElement</code>.</li>
+<li><strong>debug:</strong> <code>false</code><br>
+Enable or disable some three.js elements added to the scene to debug.</li>
+</ul>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>  var wrapperElement = document.getElementById(&#39;wrapper&#39;),
+      threepx = new THREEPX(wrapperElement),
+      mesh = new THREE.Mesh(
+          // define your mesh
+      )
+  ;
+
+  threepx.scene.add(mesh);
+
+  var lastTimestamp = new Date();
+
+  threepx.renderFunction  = function (timestamp, width, height) {
+
+      var delta = timestamp - lastTimestamp,
+          angle = 0.02 * delta * 2 * Math.PI / 1000
+      ;
+
+      mesh.rotation.x += angle;
+      mesh.rotation.y += angle;
+
+      mesh.position.set(100 + width/2, 100 - height/2, 0);
+
+      lastTimestamp = timestamp;
+
+      return true;
+  }</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_autoResize">autoResize</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_camera">camera</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_cameraChanged">cameraChanged</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_canBeUsed">canBeUsed</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_enable">enable</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_explicitHeight">explicitHeight</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_explicitWidth">explicitWidth</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_fov">fov</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_height">height</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_perspective">perspective</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_renderer">renderer</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_rendererChanged">rendererChanged</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_renderFunction">renderFunction</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_scene">scene</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_sceneChanged">sceneChanged</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_viewChanged">viewChanged</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_width">width</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_wrapper">wrapper</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_wrapperChanged">wrapperChanged</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_autoResize" class="property item">
+    <h3 class="name"><code>autoResize</code></h3>
+    <span class="type">Bollean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l339"><code>src\threepx.js:339</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If autoResize is set to true,
+the size of the <code>THREEPX.renderer.domElement</code> is bind
+to the wrapper size.</p>
+<p><em>This property can be set in the options passed to the constructor.</em></p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> true</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_camera" class="property item">
+    <h3 class="name"><code>camera</code></h3>
+    <span class="type">THREE.PerspectiveCamera</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l589"><code>src\threepx.js:589</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The three.js <a href="http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera">camera</a>
+used by the instance of ThreePx.</p>
+<p><em>Camera will be automatically added to scene.</em></p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_cameraChanged" class="property item">
+    <h3 class="name"><code>cameraChanged</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l577"><code>src\threepx.js:577</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A flag to know if the camera has changed during the frame.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_canBeUsed" class="property item">
+    <h3 class="name"><code>canBeUsed</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l268"><code>src\threepx.js:268</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>ThreePx need WebGL and requestAnimationFrame() to be used.
+If these requirements are not satisfied canBeUsed property is set to false.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_enable" class="property item">
+    <h3 class="name"><code>enable</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l318"><code>src\threepx.js:318</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Enable or disable the rendering.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> true</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_explicitHeight" class="property item">
+    <h3 class="name"><code>explicitHeight</code></h3>
+    <span class="type">Integer</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l440"><code>src\threepx.js:440</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If the explicit height is not null or not undefined,
+the height is set tho the explicit height
+and the autoResize is not effective for the height.<br></p>
+<p><em>Update the value will generate a three.js render.</em></p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> undefined</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_explicitWidth" class="property item">
+    <h3 class="name"><code>explicitWidth</code></h3>
+    <span class="type">Integer</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l412"><code>src\threepx.js:412</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If the explicit width is not null or not undefined,
+the width is set tho the explicit width
+and the autoResize is not effective for the width.<br></p>
+<p><em>Update the value will generate a three.js render.</em></p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> undefined</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_fov" class="property item">
+    <h3 class="name"><code>fov</code></h3>
+    <span class="type">Float</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l281"><code>src\threepx.js:281</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The field of view given for the perspective property.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_height" class="property item">
+    <h3 class="name"><code>height</code></h3>
+    <span class="type">Integer</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l397"><code>src\threepx.js:397</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The actual height of the <code>THREEPX.renderer.domElement</code>.<br>
+If explicitHeight property is null or undefined,
+the width is equal to the <code>THREEPX.wrapper.clientHeight</code>
+else the height is equal to explicitHeight property.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_perspective" class="property item">
+    <h3 class="name"><code>perspective</code></h3>
+    <span class="type">Float</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l293"><code>src\threepx.js:293</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The perspective parse from the wrapper CSS.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 2000 if CSS perspective is not defined for the wrapper.</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_renderer" class="property item">
+    <h3 class="name"><code>renderer</code></h3>
+    <span class="type">THREE.WebGLRenderer</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l553"><code>src\threepx.js:553</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The three.js <a href="http://threejs.org/docs/#Reference/Renderers/WebGLRenderer">renderer</a>
+used by the instance of ThreePx.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_rendererChanged" class="property item">
+    <h3 class="name"><code>rendererChanged</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l541"><code>src\threepx.js:541</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A flag to know if the renderer has changed during the frame.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_renderFunction" class="property item">
+    <h3 class="name"><code>renderFunction</code></h3>
+    <span class="type">Function</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l360"><code>src\threepx.js:360</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>An user function called at the end of the render process.
+The function must return true to make the renderer render.</p>
+
+    </div>
+
+    
+
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>threepx.renderFunction = function (timestamp, width, height) {
+    cube.rotation.y += 0.01;
+    return true;
+}</code></pre>
+
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="property_scene" class="property item">
+    <h3 class="name"><code>scene</code></h3>
+    <span class="type">THREE.Scene</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l515"><code>src\threepx.js:515</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The three.js <a href="http://threejs.org/docs/#Reference/Scenes/Scene">scene</a>
+used by the instance of ThreePx.</p>
+<p><em>Camera will be automatically added to scene.</em></p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_sceneChanged" class="property item">
+    <h3 class="name"><code>sceneChanged</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l503"><code>src\threepx.js:503</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A flag to know if the scene has changed during the frame.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_viewChanged" class="property item">
+    <h3 class="name"><code>viewChanged</code></h3>
+    <span class="type">Bollean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l306"><code>src\threepx.js:306</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Set to true if the view changed during the frame.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_width" class="property item">
+    <h3 class="name"><code>width</code></h3>
+    <span class="type">Integer</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l382"><code>src\threepx.js:382</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The actual width of the <code>THREEPX.renderer.domElement</code>.<br>
+If explicitWidth property is null or undefined,
+the width is equal to the <code>THREEPX.wrapper.clientWidth</code>
+else the width is equal to explicitWidth property.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_wrapper" class="property item">
+    <h3 class="name"><code>wrapper</code></h3>
+    <span class="type">HTMLElement</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l480"><code>src\threepx.js:480</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The wrapper used by the instance of ThreePx.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_wrapperChanged" class="property item">
+    <h3 class="name"><code>wrapperChanged</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_threepx.js.html#l468"><code>src\threepx.js:468</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Set to true if the wrapper changed during the frame.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
