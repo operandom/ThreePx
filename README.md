@@ -7,56 +7,39 @@ The size of this plane doesn't change when the html wrapper changes it's size.
 
 Installation
 ------------
-Download [three.js](http://threejs.org/) and ThreePx files and put them in your project folder.<br>
+Download [three.js](http://threejs.org/) and [ThreePx](https://github.com/operandom/ThreePx/releases) files and put them in your project folder.<br>
 Use Requirejs, Nodejs or a classical html script tag to import.<br>
 Show in the examples folder to learn more.
 
 Quick Example
 -------------
+
 ```javascript
 var wrapperElement = document.getElementById('wrapper'),
-	threepx = new THREEPX(wrapperElement);
-
-var size = 200,
-	material = new THREE.MeshLambertMaterial({
-		map: THREE.ImageUtils.loadTexture('crate.jpg')
-	}),
-	geometry = new THREE.CubeGeometry(size, size, size)
-
-var ambientLight = new THREE.AmbientLight(0xbbbbbb),
-	directionalLight = new THREE.DirectionalLight(0xffffff),
-	cube = new THREE.Mesh(
-		new THREE.CubeGeometry(size, size, size),
-		new THREE.MeshLambertMaterial({
-			map: THREE.ImageUtils.loadTexture('crate.jpg')
-		}
-	)
+    threepx = new THREEPX(wrapperElement),
+    mesh = new THREE.Mesh(
+        // define your mesh
+    )
 ;
 
-directionalLight.position.set(1, 1, 1).normalize();
-
-cube.position.z = -size/2;
-cube.overdraw = true;
-
-threepx.scene.add(cube);
-threepx.scene.add(ambientLight);
-threepx.scene.add(directionalLight);
-
+threepx.scene.add(mesh);
 
 var lastTimestamp = new Date();
 
 threepx.renderFunction  = function (timestamp, width, height) {
 
-	var delta = timestamp - lastTimestamp,
-	angle = 0.02 * delta * 2 * Math.PI / 1000
-	;
+    var delta = timestamp - lastTimestamp,
+        angle = 0.02 * delta * 2 * Math.PI / 1000
+    ;
 
-	cube.rotation.x += angle;
-	cube.rotation.y += angle;
+    mesh.rotation.x += angle;
+    mesh.rotation.y += angle;
 
-	lastTimestamp = timestamp;
+    mesh.position.set(100 + width/2, 100 - height/2, 0);
 
-	return true;
+    lastTimestamp = timestamp;
+
+    return true;
 }
 ```
 
