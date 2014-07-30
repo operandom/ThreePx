@@ -27,7 +27,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "src\\threepx.js",
-            "line": 43,
+            "line": 45,
             "description": "ThreePx synchronises the [three.js](href=\"http://threejs.org/\")\nfrustrum with that of the CSS.<br>\nSee working examples in the examples folder.",
             "is_constructor": 1,
             "params": [
@@ -51,22 +51,17 @@
     "classitems": [
         {
             "file": "src\\threepx.js",
-            "line": 277,
-            "class": "THREEPX"
-        },
-        {
-            "file": "src\\threepx.js",
-            "line": 284,
-            "description": "ThreePx need WebGL and requestAnimationFrame() to be used.\nIf these requirements are not satisfied canBeUsed property is set to false.",
+            "line": 274,
+            "description": "The version of ThreePx.",
             "itemtype": "property",
-            "name": "canBeUsed",
-            "type": "{Boolean}",
+            "name": "version",
+            "type": "{String}",
             "readonly": "",
             "class": "THREEPX"
         },
         {
             "file": "src\\threepx.js",
-            "line": 297,
+            "line": 286,
             "description": "The field of view given for the perspective property.",
             "itemtype": "property",
             "name": "fov",
@@ -76,7 +71,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 309,
+            "line": 298,
             "description": "The perspective parse from the wrapper CSS.",
             "itemtype": "property",
             "name": "perspective",
@@ -87,7 +82,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 322,
+            "line": 311,
             "description": "Set to true if the view changed during the frame.",
             "itemtype": "property",
             "name": "viewChanged",
@@ -97,7 +92,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 334,
+            "line": 323,
             "description": "Enable or disable the rendering.",
             "itemtype": "property",
             "name": "enable",
@@ -107,7 +102,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 355,
+            "line": 344,
             "description": "If autoResize is set to true,\nthe size of the `THREEPX.renderer.domElement` is bind\nto the wrapper size.\n\t\t\t \n*This property can be set in the options passed to the constructor.*",
             "itemtype": "property",
             "name": "autoResize",
@@ -117,7 +112,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 376,
+            "line": 365,
             "description": "An user function called at the end of the render process.\nThe function must return true to make the renderer render.",
             "example": [
                 "\n    threepx.renderFunction = function (timestamp, width, height) {\n        cube.rotation.y += 0.01;\n        return true;\n    }"
@@ -129,7 +124,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 398,
+            "line": 387,
             "description": "The actual width of the `THREEPX.renderer.domElement`.<br>\nIf explicitWidth property is null or undefined,\nthe width is equal to the `THREEPX.wrapper.clientWidth`\nelse the width is equal to explicitWidth property.",
             "itemtype": "property",
             "name": "width",
@@ -139,7 +134,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 413,
+            "line": 402,
             "description": "The actual height of the `THREEPX.renderer.domElement`.<br>\nIf explicitHeight property is null or undefined,\nthe width is equal to the `THREEPX.wrapper.clientHeight`\nelse the height is equal to explicitHeight property.",
             "itemtype": "property",
             "name": "height",
@@ -149,7 +144,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 428,
+            "line": 417,
             "description": "If the explicit width is not null or not undefined,\nthe width is set tho the explicit width\nand the autoResize is not effective for the width.<br>\n\n*Update the value will generate a three.js render.*",
             "itemtype": "property",
             "name": "explicitWidth",
@@ -159,7 +154,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 456,
+            "line": 445,
             "description": "If the explicit height is not null or not undefined,\nthe height is set tho the explicit height\nand the autoResize is not effective for the height.<br>\n\n*Update the value will generate a three.js render.*",
             "itemtype": "property",
             "name": "explicitHeight",
@@ -169,7 +164,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 484,
+            "line": 473,
             "description": "Set to true if the wrapper changed during the frame.",
             "itemtype": "property",
             "name": "wrapperChanged",
@@ -179,7 +174,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 496,
+            "line": 485,
             "description": "The wrapper used by the instance of ThreePx.",
             "itemtype": "property",
             "name": "wrapper",
@@ -188,7 +183,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 519,
+            "line": 508,
             "description": "A flag to know if the scene has changed during the frame.",
             "itemtype": "property",
             "name": "sceneChanged",
@@ -198,7 +193,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 531,
+            "line": 520,
             "description": "The three.js [scene](http://threejs.org/docs/#Reference/Scenes/Scene)\nused by the instance of ThreePx.\n\n*Camera will be automatically added to scene.*",
             "itemtype": "property",
             "name": "scene",
@@ -207,7 +202,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 557,
+            "line": 546,
             "description": "A flag to know if the renderer has changed during the frame.",
             "itemtype": "property",
             "name": "rendererChanged",
@@ -217,7 +212,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 569,
+            "line": 558,
             "description": "The three.js [renderer](http://threejs.org/docs/#Reference/Renderers/WebGLRenderer)\nused by the instance of ThreePx.",
             "itemtype": "property",
             "name": "renderer",
@@ -226,7 +221,7 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 593,
+            "line": 582,
             "description": "A flag to know if the camera has changed during the frame.",
             "itemtype": "property",
             "name": "cameraChanged",
@@ -236,18 +231,35 @@
         },
         {
             "file": "src\\threepx.js",
-            "line": 605,
+            "line": 594,
             "description": "The three.js [camera](http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera)\nused by the instance of ThreePx.\n\n*Camera will be automatically added to scene.*",
             "itemtype": "property",
             "name": "camera",
             "type": "{THREE.PerspectiveCamera}",
             "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 1058,
+            "description": "The version of ThreePx.",
+            "itemtype": "property",
+            "name": "version",
+            "type": "{String}",
+            "static": 1,
+            "readonly": "",
+            "class": "THREEPX"
+        },
+        {
+            "file": "src\\threepx.js",
+            "line": 1071,
+            "description": "ThreePx need WebGL and requestAnimationFrame() to be used.\nIf these requirements are not satisfied canBeUsed property is set to false.",
+            "itemtype": "property",
+            "name": "canBeUsed",
+            "type": "{Boolean}",
+            "static": 1,
+            "readonly": "",
+            "class": "THREEPX"
         }
     ],
-    "warnings": [
-        {
-            "message": "Missing item type",
-            "line": " src\\threepx.js:277"
-        }
-    ]
+    "warnings": []
 }
