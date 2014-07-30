@@ -51,11 +51,13 @@ TODO
 ----
 * Add support of perspectiveOrigin
 * Add property change events
+* Add tests
 * Improve code
 
 Developers
 ----------
-Install Gulp and node modules if you want minified the source.
+Install Gulp and node modules if you want minified the source, YUIDoc to generate the doc.<br>
+Testers, devs and ideas are welcome.
 
 Licence
 -------
