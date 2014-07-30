@@ -1,6 +1,6 @@
 {
   "name": "ThreePx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The size of this plane doesn't change when the html wrapper changes it's size.",
   "main": "dist/threepx.min.js",
   "directories": {
