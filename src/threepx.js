@@ -5,12 +5,16 @@
 
 (function(root) {
 	
+	
 	'use strict';
-	var define = root.define,
+	var version = '0.1.1',
+		define = root.define,
 		isNode = typeof module === 'object' && typeof module.exports === 'object',
 		isAMD  = typeof define === 'function' && define.amd
 		;
 		
+	console.log('ThreePx v' + version);
+	
 	if (isNode) {
 		console.log('[THREEPX] Nodejs detected');
 		define = function (requirements, factory) {
@@ -32,8 +36,10 @@
 	
 	define(['three'], function (THREE) {
 		
-		console.log('[THREEPX] class defined.');
+		console.log('[THREEPX] Class defined.');
 		
+		defineStaticAPI();
+				
 		return THREEPX;
 		
 		/**
@@ -106,7 +112,7 @@
 				perspective, width, height, fov, ratio,
 
 				// Flags
-				canBeUsed, enabled, forceResize, userNeedRender,
+				enabled, forceResize, userNeedRender,
 				explicitWidthChanged, explicitHeightChanged,
 				wrapperChanged, sceneChanged, rendererChanged, cameraChanged,
 				viewChanged,
@@ -151,10 +157,10 @@
 			function defineClass() {
 				
 				Object.defineProperties(self, {
-					canBeUsed: {
+					version: {
 						configurable: configurable,
 						enumerable: true,
-						get: getCanBeUsed
+						get: getVersion
 					},
 					enabled: {
 						configurable: configurable,
@@ -266,15 +272,14 @@
 			
 			
 			/**
-			 * ThreePx need WebGL and requestAnimationFrame() to be used.
-			 * If these requirements are not satisfied canBeUsed property is set to false.
+			 * The version of ThreePx.
 			 * 
-			 * @property canBeUsed
-			 * @type {Boolean}
+			 * @property version
+			 * @type {String}
 			 * @readOnly
 			 */
-			function getCanBeUsed() {
-				return canBeUsed;
+			function getVersion() {
+				return version;
 			}
 			
 
@@ -674,9 +679,7 @@
 			
 			function  initialize() {
 				
-				setCanBeUsed();
-				
-				if (canBeUsed) {
+				if (THREEPX.canBeUsed) {
 
 					console.log('[THREEPX] initialization start');
 
@@ -694,8 +697,10 @@
 
 					console.log('[THREEPX] initialization ended');
 
+				} else {
+					console.log('[THREEPX] Cannot be initialized because the requirements are not satisfied.');
 				}
-				
+
 			}
 			
 			
@@ -894,21 +899,6 @@
 
 
 
-			function setCanBeUsed() {
-				var value = false,
-					canvas = document.createElement('canvas');
-				
-				value = canvas.getContext && canvas.getContext('webgl');
-				value = value && requestAnimationFrame && typeof requestAnimationFrame === 'function';
-				
-				canBeUsed = value;
-				
-				if (!value) {
-					console.log('[THREEPX] Cannot be used.');
-				}
-			}
-			
-			
 			function parseOptions() {
 				
 				if (options) {
@@ -1037,6 +1027,75 @@
 		}
 		
 		
+		
+		
+		function defineStaticAPI() {
+			
+			Object.defineProperties(THREEPX, {
+				version: {
+					configurable: true,
+					enumareable: true,
+					get: getVersion
+				},
+				canBeUsed: {
+					configurable: true,
+					enumareable: true,
+					get: getCanBeUsed
+				}
+			});
+
+
+
+
+			////////////////////////////////////////////////////////////////////
+			//                                                                //
+			//  S T A T I C   A P I   M E T H O D S                           //
+			//                                                                //
+			////////////////////////////////////////////////////////////////////
+
+
+
+			/**
+			 * The version of ThreePx.
+			 * 
+			 * @property version
+			 * @type {String}
+			 * @static
+			 * @readOnly
+			 */
+			function getVersion() {
+				return version;
+			}
+
+
+			/**
+			 * ThreePx need WebGL and requestAnimationFrame() to be used.
+			 * If these requirements are not satisfied canBeUsed property is set to false.
+			 * 
+			 * @property canBeUsed
+			 * @type {Boolean}
+			 * @static
+			 * @readOnly
+			 */
+			function getCanBeUsed() {
+				var canBeUsed,
+					canvas = document.createElement('canvas'),
+					vendors = ['webkit', 'moz', 'ms', 'o'];
+
+
+				// from https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js
+				canBeUsed = !!(function () { try { return !! window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')); } catch(e) { return false; }})();
+
+				// from https://gist.github.com/paulirish/1579671
+				for(var i = 0; i < vendors.length && !window.requestAnimationFrame; i++) {
+					window.requestAnimationFrame = window[vendors[i]+'RequestAnimationFrame'];
+				}
+
+				canBeUsed = canBeUsed && window.requestAnimationFrame;
+				
+				return canBeUsed;
+			}
+		}
 	});
 	
 	
