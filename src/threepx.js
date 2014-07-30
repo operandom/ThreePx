@@ -5,12 +5,16 @@
 
 (function(root) {
 	
+	
 	'use strict';
-	var define = root.define,
+	var version = '0.1.1',
+		define = root.define,
 		isNode = typeof module === 'object' && typeof module.exports === 'object',
 		isAMD  = typeof define === 'function' && define.amd
 		;
 		
+	console.log('ThreePx v' + version);
+	
 	if (isNode) {
 		console.log('[THREEPX] Nodejs detected');
 		define = function (requirements, factory) {
@@ -32,7 +36,7 @@
 	
 	define(['three'], function (THREE) {
 		
-		console.log('[THREEPX] class defined.');
+		console.log('[THREEPX] Class defined.');
 		
 		return THREEPX;
 		
@@ -151,6 +155,11 @@
 			function defineClass() {
 				
 				Object.defineProperties(self, {
+					version: {
+						configurable: configurable,
+						enumerable: true,
+						get: getVersion
+					},
 					canBeUsed: {
 						configurable: configurable,
 						enumerable: true,
@@ -264,6 +273,17 @@
 			////////////////////////////////////////////////////////////////////
 
 			
+			
+			/**
+			 * The version of ThreePx.
+			 * 
+			 * @property version
+			 * @type {String}
+			 * @readOnly
+			 */
+			function getVersion() {
+				return version;
+			}
 			
 			/**
 			 * ThreePx need WebGL and requestAnimationFrame() to be used.
@@ -904,7 +924,7 @@
 				
 				// from https://gist.github.com/paulirish/1579671
 				for(var i = 0; i < vendors.length && !window.requestAnimationFrame; i++) {
-					window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+					window.requestAnimationFrame = window[vendors[i]+'RequestAnimationFrame'];
 				}
 				
 				canBeUsed = canBeUsed && window.requestAnimationFrame;
