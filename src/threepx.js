@@ -895,15 +895,21 @@
 
 
 			function setCanBeUsed() {
-				var value = false,
-					canvas = document.createElement('canvas');
+				var canvas = document.createElement('canvas'),
+					vendors = ['webkit', 'moz', 'ms', 'o'];
 				
-				value = canvas.getContext && canvas.getContext('webgl');
-				value = value && requestAnimationFrame && typeof requestAnimationFrame === 'function';
 				
-				canBeUsed = value;
+				// from https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js
+				canBeUsed = !!(function () { try { return !! window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')); } catch(e) { return false; }})();
 				
-				if (!value) {
+				// from https://gist.github.com/paulirish/1579671
+				for(var i = 0; i < vendors.length && !window.requestAnimationFrame; i++) {
+					window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+				}
+				
+				canBeUsed = canBeUsed && window.requestAnimationFrame;
+				
+				if (!canBeUsed) {
 					console.log('[THREEPX] Cannot be used.');
 				}
 			}
