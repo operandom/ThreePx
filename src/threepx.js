@@ -37,19 +37,26 @@
 		return THREEPX;
 		
 		/**
-		 * ThreePx synchronises the three.js frustrum with that of the CSS.<br>
-		 * Complete examples are in the examples folder.
-		 * 
+		 * ThreePx synchronises the [three.js](href="http://threejs.org/")
+		 * frustrum with that of the CSS.<br>
+		 * See working examples in the examples folder.
 		 * 
 		 * @class THREEPX
 		 * @constructor
 		 * 
-		 * @param {HTMLElement} wrapper The THREEPX.rendeer.domElment will be added at position 0 of the wrapper.
-		 * @param {Object} [options={}] The default options are:
-		 *  * configurable: false
-		 *  * autoInitializeThreejs: true
-		 *  * autoResize: true
-		 *  * debug: false
+		 * @param {HTMLElement} wrapper The `THREEPX.renderer.domElement`
+		 *    will be added at position 0 of the wrapper.
+		 * @param {Object} [options] The default options are:
+		 *  * __configurable:__ `false`<br>
+		 *    Enable this option to override if you want override the API.
+		 *  * __autoInitializeThreejs:__ `true`<br>
+		 *    Enable or disable the creation of the scene, the renderer
+		 *    and the camera on the new ThreePx instance.
+		 *  * __autoResize:__ `true`<br>
+		 *    Enable or disable the bind between the wrapper size and
+		 *    the `THREEPX.renderer.domElement`.
+		 *  * __debug:__ `false`<br>
+		 *    Enable or disable some three.js elements added to the scene to debug.
 		 *
 		 * @example
 		 *       var wrapperElement = document.getElementById('wrapper'),
@@ -242,7 +249,6 @@
 						enumerable: true,
 						get: getCameraChanged,
 					}
-
 					
 				});
 				
@@ -261,10 +267,10 @@
 			
 			/**
 			 * ThreePx need WebGL and requestAnimationFrame() to be used.
-			 * If these requirements are not satisfied canBeUsed is set to false.
+			 * If these requirements are not satisfied canBeUsed property is set to false.
 			 * 
 			 * @property canBeUsed
-			 * @type {Bollean}
+			 * @type {Boolean}
 			 * @readOnly
 			 */
 			function getCanBeUsed() {
@@ -289,7 +295,7 @@
 			 *
 			 * @property perspective
 			 * @type {Float}
-			 * @default 2000
+			 * @default 2000 if CSS perspective is not defined for the wrapper.
 			 * @readOnly
 			 */
 			function getPerspective() {
@@ -313,7 +319,7 @@
 			 * Enable or disable the rendering.
 			 * 
 			 * @property enable
-			 * @type {Bollean}
+			 * @type {Boolean}
 			 * @default true
 			 */
 			function getEnabled() {
@@ -332,12 +338,14 @@
 
 			/**
 			 * If autoResize is set to true,
-			 * the size of the THREEPX.renderer.domElement is bind
-			 * to the wrapper size.<br>
-			 * Note that autoResize can be set in the constructor options.
+			 * the size of the `THREEPX.renderer.domElement` is bind
+			 * to the wrapper size.
+			 
+			 * *This property can be set in the options passed to the constructor.*
 			 * 
 			 * @property autoResize
 			 * @type {Bollean}
+			 * @default true
 			 */
 			function getAutoResize() {
 				return autoResize;
@@ -358,8 +366,8 @@
 			 *         cube.rotation.y += 0.01;
 			 *         return true;
 			 *     }
-			 * @property enable
-			 * @type {Bollean}
+			 * @property renderFunction
+			 * @type {Function}
 			 */
 			function getRenderFunction() {
 				return renderFunction;
@@ -372,9 +380,9 @@
 
 
 			/**
-			 * The actual width of the THREEPX.renderer.domElement.<br>
+			 * The actual width of the `THREEPX.renderer.domElement`.<br>
 			 * If explicitWidth property is null or undefined,
-			 * the width is equal to the THREEPX.wrapper.clientWidth
+			 * the width is equal to the `THREEPX.wrapper.clientWidth`
 			 * else the width is equal to explicitWidth property.
 			 * 
 			 * @property width
@@ -387,9 +395,9 @@
 
 
 			/**
-			 * The actual height of the THREEPX.renderer.domElement.<br>
+			 * The actual height of the `THREEPX.renderer.domElement`.<br>
 			 * If explicitHeight property is null or undefined,
-			 * the width is equal to the THREEPX.wrapper.clientHeight
+			 * the width is equal to the `THREEPX.wrapper.clientHeight`
 			 * else the height is equal to explicitHeight property.
 			 * 
 			 * @property height
@@ -404,8 +412,9 @@
 			/**
 			 * If the explicit width is not null or not undefined,
 			 * the width is set tho the explicit width
-			 * and the autoresize is not effective for the width.<br>
-			 * Note that setting width the explicit make the renderer render.
+			 * and the autoResize is not effective for the width.<br>
+			 * 
+			 * *Update the value will generate a three.js render.*
 			 * 
 			 * @property explicitWidth
 			 * @type {Integer}
@@ -431,8 +440,9 @@
 			/**
 			 * If the explicit height is not null or not undefined,
 			 * the height is set tho the explicit height
-			 * and the autoresize is not effective for the height.<br>
-			 * Note that setting the explicit height make the renderer render.
+			 * and the autoResize is not effective for the height.<br>
+			 *
+			 * *Update the value will generate a three.js render.*
 			 * 
 			 * @property explicitHeight
 			 * @type {Integer}
@@ -503,9 +513,10 @@
 
 
 			/**
-			 * The three.js
-			 * <a href="http://threejs.org/docs/#Reference/Scenes/Scene">scene</a>
+			 * The three.js [scene](http://threejs.org/docs/#Reference/Scenes/Scene)
 			 * used by the instance of ThreePx.
+			 * 
+			 * *Camera will be added to scene*
 			 * 
 			 * @property scene
 			 * @type {THREE.Scene}
@@ -528,8 +539,7 @@
 
 
 			/**
-			 * If the renderer changed during the frame,
-			 * the value of this property is set to true.
+			 * Set to true if the renderer changed during the frame.
 			 * 
 			 * @property rendererChanged
 			 * @readOnly
@@ -541,8 +551,7 @@
 
 
 			/**
-			 * The three.js
-			 * <a href="http://threejs.org/docs/#Reference/Renderers/WebGLRenderer">renderer</a>
+			 * The three.js [renderer](http://threejs.org/docs/#Reference/Renderers/WebGLRenderer)
 			 * used by the instance of ThreePx.
 			 * 
 			 * @property renderer
@@ -569,7 +578,7 @@
 			 * If the renderer changed during the frame,
 			 * the value of this property is set to true.
 			 * 
-			 * @property rendererChanged
+			 * @property cameraChanged
 			 * @readOnly
 			 * @type {Boolean}
 			 */
@@ -579,11 +588,12 @@
 
 
 			/**
-			 * The three.js
-			 * <a href="http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera">camera</a>
+			 * The three.js [camera](http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera)
 			 * used by the instance of ThreePx.
 			 * 
-			 * @property renderer
+			 * *Camera will be added to scene*
+			 * 
+			 * @property camera
 			 * @type {THREE.PerspectiveCamera}
 			 */
 			function getCamera() {
