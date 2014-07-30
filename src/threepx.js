@@ -38,6 +38,8 @@
 		
 		console.log('[THREEPX] Class defined.');
 		
+		defineStaticAPI();
+				
 		return THREEPX;
 		
 		/**
@@ -110,7 +112,7 @@
 				perspective, width, height, fov, ratio,
 
 				// Flags
-				canBeUsed, enabled, forceResize, userNeedRender,
+				enabled, forceResize, userNeedRender,
 				explicitWidthChanged, explicitHeightChanged,
 				wrapperChanged, sceneChanged, rendererChanged, cameraChanged,
 				viewChanged,
@@ -159,11 +161,6 @@
 						configurable: configurable,
 						enumerable: true,
 						get: getVersion
-					},
-					canBeUsed: {
-						configurable: configurable,
-						enumerable: true,
-						get: getCanBeUsed
 					},
 					enabled: {
 						configurable: configurable,
@@ -283,18 +280,6 @@
 			 */
 			function getVersion() {
 				return version;
-			}
-			
-			/**
-			 * ThreePx need WebGL and requestAnimationFrame() to be used.
-			 * If these requirements are not satisfied canBeUsed property is set to false.
-			 * 
-			 * @property canBeUsed
-			 * @type {Boolean}
-			 * @readOnly
-			 */
-			function getCanBeUsed() {
-				return canBeUsed;
 			}
 			
 
@@ -694,9 +679,7 @@
 			
 			function  initialize() {
 				
-				setCanBeUsed();
-				
-				if (canBeUsed) {
+				if (THREEPX.canBeUsed) {
 
 					console.log('[THREEPX] initialization start');
 
@@ -714,8 +697,10 @@
 
 					console.log('[THREEPX] initialization ended');
 
+				} else {
+					console.log('[THREEPX] Cannot be initialized because the requirements are not satisfied.');
 				}
-				
+
 			}
 			
 			
@@ -914,27 +899,6 @@
 
 
 
-			function setCanBeUsed() {
-				var canvas = document.createElement('canvas'),
-					vendors = ['webkit', 'moz', 'ms', 'o'];
-				
-				
-				// from https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js
-				canBeUsed = !!(function () { try { return !! window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')); } catch(e) { return false; }})();
-				
-				// from https://gist.github.com/paulirish/1579671
-				for(var i = 0; i < vendors.length && !window.requestAnimationFrame; i++) {
-					window.requestAnimationFrame = window[vendors[i]+'RequestAnimationFrame'];
-				}
-				
-				canBeUsed = canBeUsed && window.requestAnimationFrame;
-				
-				if (!canBeUsed) {
-					console.log('[THREEPX] Cannot be used.');
-				}
-			}
-			
-			
 			function parseOptions() {
 				
 				if (options) {
@@ -1063,6 +1027,75 @@
 		}
 		
 		
+		
+		
+		function defineStaticAPI() {
+			
+			Object.defineProperties(THREEPX, {
+				version: {
+					configurable: true,
+					enumareable: true,
+					get: getVersion
+				},
+				canBeUsed: {
+					configurable: true,
+					enumareable: true,
+					get: getCanBeUsed
+				}
+			});
+
+
+
+
+			////////////////////////////////////////////////////////////////////
+			//                                                                //
+			//  S T A T I C   A P I   M E T H O D S                           //
+			//                                                                //
+			////////////////////////////////////////////////////////////////////
+
+
+
+			/**
+			 * The version of ThreePx.
+			 * 
+			 * @property version
+			 * @type {String}
+			 * @static
+			 * @readOnly
+			 */
+			function getVersion() {
+				return version;
+			}
+
+
+			/**
+			 * ThreePx need WebGL and requestAnimationFrame() to be used.
+			 * If these requirements are not satisfied canBeUsed property is set to false.
+			 * 
+			 * @property canBeUsed
+			 * @type {Boolean}
+			 * @static
+			 * @readOnly
+			 */
+			function getCanBeUsed() {
+				var canBeUsed,
+					canvas = document.createElement('canvas'),
+					vendors = ['webkit', 'moz', 'ms', 'o'];
+
+
+				// from https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js
+				canBeUsed = !!(function () { try { return !! window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')); } catch(e) { return false; }})();
+
+				// from https://gist.github.com/paulirish/1579671
+				for(var i = 0; i < vendors.length && !window.requestAnimationFrame; i++) {
+					window.requestAnimationFrame = window[vendors[i]+'RequestAnimationFrame'];
+				}
+
+				canBeUsed = canBeUsed && window.requestAnimationFrame;
+				
+				return canBeUsed;
+			}
+		}
 	});
 	
 	
