@@ -5,6 +5,9 @@ ThreePx synchronises the [three.js](http://threejs.org/) frustrum with that of t
 So, a 100 by 100 plane with a Z position of 0 and without rotation in three.js has a size of 100px by 100px on the screen.
 The size of this plane doesn't change when the html wrapper changes it's size.
 
+![simple preview](./assets/simple-anim.gif)
+![simple preview](./assets/amd-anim.gif)
+
 Installation
 ------------
 Download [three.js](http://threejs.org/) and [ThreePx](https://github.com/operandom/ThreePx/releases) files and put them in your project folder.<br>
